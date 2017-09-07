@@ -9,10 +9,10 @@ public class Main {
         //use scanner to grab the VIN number
         System.out.println("What is your vehicle's VIN?");
         int userVIN = scanner.nextInt();
-        System.out.println("Now what's your odometer set at? That's the thing that tells you how many miles your car's ran.");
+        System.out.println("Now what's the current odometer reading?");
         //exception handling: "the long number on your dashboard"
         double userOdometer = scanner.nextDouble();
-        System.out.println("How man gallons of Gas can you consume at once? Well your car actually. How many gallons have you used?");
+        System.out.println("How many gallons of gas have been consumed?");
         double userConsumption = scanner.nextDouble();
         System.out.println("What was the odometer reading for the most recent oil change?");
         double userLastReading = scanner.nextDouble();
