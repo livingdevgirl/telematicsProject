@@ -49,7 +49,7 @@ public class VehicleInfo {
         this.lastReading = lastReading;
     }
 
-    public double getOdometer() {
+    public double getOdometer () {
         return odometer;
     }
 

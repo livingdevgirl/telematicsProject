@@ -27,8 +27,7 @@ public class Main {
         newVehicle.setEngineSize(userEngineSize);
 
         //here we use the report method in the telematics class
-        TelematicsService.report(newVehicle);
-
+        TelematicsService.report (newVehicle);
 
 
     }
