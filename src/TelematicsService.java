@@ -25,26 +25,44 @@ public class TelematicsService {
             System.out.println (String.format ("Hey dude so your VIN is %s, that's great! NOW you gotta make a file that's a .json file and return an html template dummy.", vehicleInfo.VIN));
             //this is working
             String odometer = String.format ("%.1s", vehicleInfo.odometer);
-            String consumption = String.format ("%.2s", vehicleInfo.consumption);
-            String lastReading = String.format ("%.3s", vehicleInfo.lastReading);
-            String liters = String.format ("%.4s", vehicleInfo.engineSize);
-            String basichtml = String.format ("<html>\n" +
+            String consumption = String.format ("%.5s", vehicleInfo.consumption);
+            String lastReading = String.format ("%.5s", vehicleInfo.lastReading);
+            String liters = String.format ("%.5s", vehicleInfo.engineSize);
+
+            String basichtml = String.format("<html>\n" +
+                    "<title>Vehicle Telematics Dashboard</title>\n" +
                     "<body>\n" +
-                    "The current odometer reading is " +
-                    odometer.toString () +
-                    "miles\n" +
-                    "The total consumption is " +
-                    consumption.toString () +
-                    "gallons\n" +
-                    "the last reading the odometer was " +
+                    "<h1 align=\"center\">Averages for # vehicles</h1>\n" +
+                    "<table align=\"center\">\n" +
+                    "    <tr>\n" +
+                    "        <th>Odometer (miles) |</th><th>Consumption (gallons) |</th><th>Last Oil Change |</th><th>Engine Size (liters)</th>\n" +
+                    "    </tr>\n" +
+                    "    <tr>\n" +
+                    "        <td align=\"center\">#</td><td align=\"center\">#</td><td align=\"center\">#</td align=\"center\"><td align=\"center\">#</td>\n" +
+                    "    </tr>\n" +
+                    "</table>\n" +
+                    "<h1 align=\"center\">History</h1>\n" +
+                    "<table align=\"center\" border=\"1\">\n" +
+                    "    <tr>\n" +
+                    "        <th>VIN</th><th>Odometer (miles)</th><th>Consumption (gallons)</th><th>Last Oil Change</th><th>Engine Size (liters)</th>\n" +
+                    "    </tr>\n" +
+                    "    <tr>\n" +
+                    "        <td align=\"center\">#</td><td align=\"center\">#</td><td align=\"center\">#</td><td align=\"center\">#</td align=\"center\"><td align=\"center\">#</td>\n" +
+                    "    </tr>\n" +
+                    "    <tr>\n" +
+                    "        <td align=\"center\">+" +
+                    odometer +
+                    "</td><td align=\"center\">"+
+                    consumption+
+                    "</td><td align=\"center\">"+
                     lastReading +
-                    "miles\n" +
-                    "the total engine size in liters is " +
+                    "</td><td align=\"center\">345</td align=\"center\"><td align=\"center\">"+
                     liters +
-                    "." +
-                    "</html>", vehicleInfo.consumption);
-
-
+                    "</td>\n" +
+                    "    </tr>\n" +
+                    "</table>\n" +
+                    "</body>\n" +
+                    "</html>", vehicleInfo);
 
 
 
@@ -74,9 +92,10 @@ public class TelematicsService {
                     // You can use this to create a new instance of Scanner
                     VehicleInfo vi = mapper.readValue (json, VehicleInfo.class);
                     String viWrite = mapper.writer ().writeValueAsString (vi);
-                    System.out.println ("Json information is " + f.getName () + viWrite);
+                    System.out.println ("Json information is " + f.getName ());
 
                 }
+
 
             }
         } catch (JsonProcessingException e) {
