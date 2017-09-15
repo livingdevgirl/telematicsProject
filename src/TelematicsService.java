@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.*;
 
 import java.io.*;
 
@@ -78,10 +79,10 @@ public class TelematicsService {
 //            FileWriter htmlFile = new FileWriter (fileWriter.getAbsolutePath("dashboard.html"));
             String htmlDirection = "dashboard.html";
             File htmlFile = new File(htmlDirection);
-                FileOutputStream stream = new FileOutputStream(htmlFile, false);
-                byte[] myBytes = basichtml.getBytes();
-                stream.write(myBytes);
-                stream.close();
+            FileOutputStream stream = new FileOutputStream(htmlFile, false);
+            byte[] myBytes = basichtml.getBytes();
+            stream.write(myBytes);
+            stream.close();
 
             File file = new File (".");
 
@@ -93,7 +94,7 @@ public class TelematicsService {
                     VehicleInfo vi = mapper.readValue (json, VehicleInfo.class);
                     String viWrite = mapper.writer ().writeValueAsString (vi);
                     System.out.println ("Json information is " + f.getName ());
-
+                    transfer();
                 }
 
 
@@ -106,17 +107,17 @@ public class TelematicsService {
 
     }
 
-    //add method to get the info from json into list
-//
-//    public static List<VehicleInfo> transfer (VehicleInfo vi) throws IOException {
-//        File file = new File (".");
-//        List<VehicleInfo> vinfo = new ArrayList<> ();
-//        for (File x : file.listFiles ()) {
-//            if (x.getName ().endsWith (".json")) {
-//                ObjectMapper lemapper = new ObjectMapper ();
-//                vinfo.add (lemapper.readValue (x, VehicleInfo.class));
-//            }
-//        }
-//        return vinfo;
-//    }
+//    add method to get the info from json into list
+
+    public static List<VehicleInfo> transfer () throws IOException {
+        File file = new File (".");
+        List<VehicleInfo> vinfo = new ArrayList<> ();
+        for (File x : file.listFiles ()) {
+            if (x.getName ().endsWith (".json")) {
+                ObjectMapper lemapper = new ObjectMapper ();
+                vinfo.add (lemapper.readValue (x, VehicleInfo.class));
+            }
+        }
+        return vinfo;
+    }
 }

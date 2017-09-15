@@ -1,4 +1,7 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
 
@@ -25,6 +28,8 @@ public class Main {
         newVehicle.setConsumption(userConsumption);
         newVehicle.setLastReading(userLastReading);
         newVehicle.setEngineSize(userEngineSize);
+
+        ArrayList<VehicleInfo> list = new ArrayList<>();
 
         //here we use the report method in the telematics class
         TelematicsService.report (newVehicle);
